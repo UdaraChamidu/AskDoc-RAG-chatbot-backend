@@ -37,5 +37,6 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-### This backend was successfully deployed in railway.app site. But there were some issues with the deployment of frontend. 
+### This backend was successfully deployed in railway.app site. But there were some issues with the deployment of frontend. Render.com did not use. Because of an debit card issue. This is the URL of this backend.
+https://rag-chatbot-backend-production-498e.up.railway.app
 
