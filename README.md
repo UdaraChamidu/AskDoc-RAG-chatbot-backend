@@ -37,3 +37,5 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
+### This backend was successfully deployed in railway.app site. But there were some issues with the deployment of frontend. 
+
