@@ -36,7 +36,7 @@ async def upload_file(file: UploadFile = File(...)):
         content = await file.read()
         f.write(content)
 
-    return {"file_id": file_path, "filename": file.filename}
+    return {"file_id": file_id, "filename": file.filename}  # <-- just return ID
 
 @app.post("/chat")
 async def chat(request: Request):
@@ -45,8 +45,11 @@ async def chat(request: Request):
     session_id = data.get("session_id", "default")
     file_id = data.get("file_id")
 
-    if not file_id or not os.path.exists(file_id):
+    # Build full path from ID
+    file_path = os.path.join(UPLOAD_DIR, file_id)
+
+    if not file_id or not os.path.exists(file_path):
         return JSONResponse(status_code=400, content={"error": "Invalid or missing PDF"})
 
-    answer = ask_question(user_input, file_id, session_id)
+    answer = ask_question(user_input, file_path, session_id)
     return {"answer": answer}

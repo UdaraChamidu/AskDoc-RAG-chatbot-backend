@@ -51,13 +51,20 @@ loaded_chains = {}
 
 def get_rag_chain(file_path):
     if file_path in loaded_chains:
+        print(f"[DEBUG] Using cached chain for {file_path}")
         return loaded_chains[file_path]
 
+    print(f"[DEBUG] Loading PDF from: {file_path}")
     loader = PyPDFLoader(file_path)
     docs = loader.load()
+    print(f"[DEBUG] Loaded {len(docs)} pages")
 
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=100, chunk_overlap=25)
+    if len(docs) == 0:
+        print("[WARNING] No documents loaded from PDF!")
+
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
     splits = text_splitter.split_documents(docs)
+    print(f"[DEBUG] Created {len(splits)} chunks from PDF")
 
     vector_store = FAISS.from_documents(splits, embedding=embedding_model)
     retriever = vector_store.as_retriever()
@@ -74,7 +81,9 @@ def get_rag_chain(file_path):
     )
 
     loaded_chains[file_path] = conversational_rag_chain
+    print(f"[DEBUG] Created and cached RAG chain for {file_path}")
     return conversational_rag_chain
+
 
 #Unified ask function
 def ask_question(question: str, file_path: str, session_id: str = "default"):
@@ -83,4 +92,5 @@ def ask_question(question: str, file_path: str, session_id: str = "default"):
         {"input": question},
         config={"configurable": {"session_id": session_id}}
     )
+    print(f"[DEBUG] Response answer: {response['answer']}")
     return response["answer"]
