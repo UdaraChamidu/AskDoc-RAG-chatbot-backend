@@ -1,12 +1,12 @@
 # AskDoc Chatbot - Backend
 
-![Backend Architecture](./path_to_backend_architecture_image.png)  
-<!-- Replace with your actual image path -->
-
 This is the **FastAPI backend** for the AskDoc chatbot application.  
 It serves the API endpoints for uploading PDFs and querying the AI chatbot.
 
 ---
+<img width="1103" height="831" alt="image" src="https://github.com/user-attachments/assets/cc4ff7d7-811e-4466-91dc-9fdc016ae026" />
+
+
 
 ## Demo
 
@@ -28,8 +28,17 @@ It serves the API endpoints for uploading PDFs and querying the AI chatbot.
 
 ### Prerequisites
 
-- Python 3.8+
+- Python 
 - pip
+- langchain
+- Faiss
+- Gemini API
+- pypdf loader
+- recursive character splitter
+- google generative AI embedding
+- dotenv
+- FastAPI
+- uvicorn
 
 ### Installation
 
