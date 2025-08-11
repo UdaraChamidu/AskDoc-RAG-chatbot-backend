@@ -10,11 +10,15 @@ app = FastAPI()
 # CORS for React frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Update if hosted elsewhere
+    allow_origins=[
+        "http://localhost:3000",  # for local development
+        "https://ask-doc-rag-chatbot-frontend.vercel.app"  # your deployed frontend URL on Vercel
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 UPLOAD_DIR = "uploaded_pdfs"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
