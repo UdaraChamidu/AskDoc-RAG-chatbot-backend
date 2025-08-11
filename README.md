@@ -1,42 +1,56 @@
-# ⚙️ Chatbot Backend (FastAPI)
+# AskDoc Chatbot - Backend
 
-This is the **FastAPI backend** for the RAG-based chatbot. It handles user queries and generates responses using LangChain, FAISS and Gemini API.
+This is the **FastAPI backend** for the AskDoc chatbot application.  
+It serves the API endpoints for uploading PDFs and querying the AI chatbot.
 
-To Run, Save this frontend and backend two repositories in a one single folder. After that, run separately frontend and backend using seperate terminals. First run backend and then run frontend.
+---
+<img width="1103" height="831" alt="image" src="https://github.com/user-attachments/assets/cc4ff7d7-811e-4466-91dc-9fdc016ae026" />
 
-## 🧰 Tech Stack
 
-- [FastAPI](https://fastapi.tiangolo.com/)
-- [LangChain](https://www.langchain.com/)
-- [FAISS](https://github.com/facebookresearch/faiss)
-- [Gemini API](https://ai.google.dev/)
-- [Uvicorn](https://www.uvicorn.org/)
 
-## 🚀 Getting Started
+## Demo
+
+[![Open Demo](https://img.shields.io/badge/Open-Demo-blue?style=for-the-badge&logo=google-chrome)](http://your-demo-url.com)  
+<!-- Replace `http://your-demo-url.com` with your actual deployed backend/demo URL -->
+
+---
+
+## Features
+
+- PDF file upload and storage
+- RAG-based AI chatbot answering questions based on PDFs
+- Session-based chat history
+- CORS enabled for React frontend
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Python 
+- pip
+- langchain
+- Faiss
+- Gemini API
+- pypdf loader
+- recursive character splitter
+- google generative AI embedding
+- dotenv
+- FastAPI
+- uvicorn
+
+### Installation
 
 ```bash
-# Clone the repo
-git clone https://github.com/YOUR_USERNAME/chatbot-backend.git
-cd chatbot-backend
-```
-
-# Create virtual environment
-```
+git clone https://github.com/UdaraChamidu/AskDoc-RAG-chatbot-backend.git
+cd backend
 python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
-```
-
-# Install dependencies
-```
+venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-
-# Run the server
+### To Run
 ```
 uvicorn main:app --reload
 ```
-
-### This backend was successfully deployed in railway.app site. But there were some issues with the deployment of frontend. Render.com did not use. Because of an debit card issue. This is the URL of this backend.
-https://rag-chatbot-backend-production-498e.up.railway.app
-
